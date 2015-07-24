@@ -1,35 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Game15
+﻿namespace Game15
 {
-    class Game15
-    {
-        static int[,] a = new int[4, 4] {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,0}};
-        static int x = 3, y = 3;
-        static bool flag2 = true;
-        static int broqch;       
-        
-        
-        static string[] топКандидати = new string[5];
-        static int topCount = 0;
+    using System;
 
-        static bool check(int i, int j)
+    public class Game15
+    {
+        private static int[,] a = new int[4, 4] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 0 } };
+        private static int x = 3, y = 3;
+        private static bool flag2 = true;
+        private static int broqch;
+
+        private static string[] топКандидати = new string[5];
+        private static int topCount = 0;
+
+        private static bool Check(int i, int j)
         {
             if ((i == x - 1 || i == x + 1) && j == y)
             {
                 return true;
             }
+
             if ((i == x) && (j == y - 1 || j == y + 1))
             {
                 return true;
             }
+
             return false;
         }
 
-        static void Move(int n)
+        public static void Move(int n)
         {
             int k = x, l = y;
             bool flag = true;
@@ -41,7 +39,8 @@ namespace Game15
                     {
                         if (a[i, j] == n)
                         {
-                            k = i; l = j;
+                            k = i;
+                            l = j;
                             flag = false;
                             break;
                         }
@@ -53,7 +52,7 @@ namespace Game15
                 }
             }
 
-            bool flag2 = check(k, l);
+            bool flag2 = Check(k, l);
             if (!flag2)
             {
                 Console.WriteLine("Illegal move!");
@@ -63,7 +62,7 @@ namespace Game15
                 int temp = a[k, l];
                 a[k, l] = a[x, y];
                 a[x, y] = temp;
-                x = k; 
+                x = k;
                 y = l;
                 broqch++;
                 Console.WriteLine(" -------------");
@@ -73,19 +72,27 @@ namespace Game15
                     for (int j = 0; j < 4; j++)
                     {
                         if (a[i, j] >= 10)
-                            Console.Write("{0} ", a[i, j]);
+                        { 
+                            Console.Write("{0} ", a[i, j]); 
+                        }
                         else if (a[i, j] == 0)
+                        {
                             Console.Write("   ");
+                        }
                         else
+                        {
                             Console.Write(" {0} ", a[i, j]);
+                        }
                     }
+
                     Console.WriteLine("|");
                 }
+
                 Console.WriteLine(" -------------");
             }
         }
 
-        static bool check2()
+        public static bool Check2()
         {
             if (a[3, 3] == 0)
             {
@@ -112,10 +119,11 @@ namespace Game15
                     }
                 }
             }
+
             return false;
         }
 
-        static void startagain()
+        public static void StartAgain()
         {
             broqch = 0;
             Random r = new Random();
@@ -140,6 +148,7 @@ namespace Game15
                         i--;
                     }
                 }
+
                 if (n == 1)
                 {
                     int nx = x;
@@ -158,6 +167,7 @@ namespace Game15
                         i--;
                     }
                 }
+
                 if (n == 2)
                 {
                     int nx = x + 1;
@@ -176,6 +186,7 @@ namespace Game15
                         i--;
                     }
                 }
+
                 if (n == 3)
                 {
                     int nx = x;
@@ -194,6 +205,7 @@ namespace Game15
                     }
                 }
             }
+
             Console.WriteLine(" -------------");
             for (int i = 0; i < 4; i++)
             {
@@ -201,31 +213,41 @@ namespace Game15
                 for (int j = 0; j < 4; j++)
                 {
                     if (a[i, j] >= 10)
+                    {
                         Console.Write("{0} ", a[i, j]);
+                    }
                     else if (a[i, j] == 0)
+                    {
                         Console.Write("   ");
+                    }
                     else
+                    {
                         Console.Write(" {0} ", a[i, j]);
+                    }
                 }
+
                 Console.WriteLine("|");
             }
+
             Console.WriteLine(" -------------");
         }
 
-        static void move(int i, string res)
+        public static void Move(int i, string res)
         {
             if (i == 0)
             {
                 топКандидати[i] = res;
             }
+
             for (int j = 0; j < i; j++)
             {
                 топКандидати[j] = топКандидати[j + 1];
             }
+
             топКандидати[i] = res;
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             while (flag2)
             {
@@ -252,6 +274,7 @@ namespace Game15
                             i--;
                         }
                     }
+
                     if (n == 1)
                     {
                         int nx = x;
@@ -270,6 +293,7 @@ namespace Game15
                             i--;
                         }
                     }
+
                     if (n == 2)
                     {
                         int nx = x + 1;
@@ -288,6 +312,7 @@ namespace Game15
                             i--;
                         }
                     }
+
                     if (n == 3)
                     {
                         int nx = x;
@@ -306,6 +331,7 @@ namespace Game15
                         }
                     }
                 }
+
                 Console.WriteLine("Welcome to the game “15”. Please try to arrange the numbers sequentially. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.\n");
                 Console.WriteLine(" -------------");
                 for (int i = 0; i < 4; i++)
@@ -314,17 +340,25 @@ namespace Game15
                     for (int j = 0; j < 4; j++)
                     {
                         if (a[i, j] >= 10)
+                        {
                             Console.Write("{0} ", a[i, j]);
+                        }
                         else if (a[i, j] == 0)
+                        {
                             Console.Write("   ");
+                        }
                         else
+                        {
                             Console.Write(" {0} ", a[i, j]);
+                        }
                     }
+
                     Console.WriteLine("|");
                 }
+
                 Console.WriteLine(" -------------");
 
-                bool flagSolved = check2();
+                bool flagSolved = Check2();
                 while (!flagSolved)
                 {
                     Console.Write("Enter a number to move: ");
@@ -354,7 +388,7 @@ namespace Game15
                         {
                             if (s == "restart")
                             {
-                                startagain();
+                                StartAgain();
                             }
                             else
                             {
@@ -372,6 +406,7 @@ namespace Game15
                                     {
                                         Console.WriteLine("-");
                                     }
+
                                     Console.WriteLine();
                                 }
                                 else
@@ -381,43 +416,37 @@ namespace Game15
                             }
                         }
                     }
-                    flagSolved = check2();
+
+                    flagSolved = Check2();
                 }
+
                 if (flagSolved)
                 {
                     Console.WriteLine("Congratulations! You won the game in {0} moves.", broqch);
-                   
+
                     Console.Write("Please enter your name for the top scoreboard: ");
-                   
+
                     string s1 = Console.ReadLine();
-                  
+
                     string res = broqch + " moves by " + s1;
-                 
+
                     if (topCount < 5)
                     {
                         топКандидати[topCount] = res;
-                 
                         topCount++;
-                 
-               
                         Array.Sort(топКандидати);
                     }
-
-
-
                     else
-
-
-                    
-
+                    {
                         for (int i = 4; i >= 0; i++)
-                        
-
+                        {
                             if (топКандидати[i].CompareTo(res) <= 0)
-                            
+                            {
+                                Move(i, res);
+                            }
+                        }
+                    }
 
-                                move(i, res);
-                            
                     Console.WriteLine("\nScoreboard:");
                     if (topCount != 0)
                     {
@@ -430,6 +459,7 @@ namespace Game15
                     {
                         Console.WriteLine("-");
                     }
+
                     Console.WriteLine();
                 }
             }
