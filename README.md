@@ -25,3 +25,6 @@ To implement a "Game 15" (console game)
 
 * Use StyleCop to properly format your code and keep the good practices. I suggest you disable the documentation checking, so that you don't get flooded with unnecessary errors.
 https://stylecop.codeplex.com/
+
+##Project Description
+https://github.com/karabeliov/HQC-Teamwork-2015/wiki/Project-Description
